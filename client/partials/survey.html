@@ -1,0 +1,36 @@
+<div class="top">
+  <a href="#!/main">Go to Polls</a>
+</div>
+<h2>{{SC.survey.question}}</h2>
+<h4>Click the Vote button to choose one.</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Current Count of Votes</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{SC.survey.option1}}</td>
+      <td>{{SC.survey.votes1}}</td>
+      <td><button ng-click='votes1(survey._id)'>Vote</button></td>
+    </tr>
+    <tr>
+      <td>{{SC.survey.option2}}</td>
+      <td>{{SC.survey.votes2}}</td>
+      <td><button ng-click='votes2(survey._id)'>Vote</button></td>
+    </tr>
+    <tr>
+      <td>{{SC.survey.option3}}</td>
+      <td>{{SC.survey.votes3}}</td>
+      <td><button ng-click='votes3(survey._id)'>Vote</button></td>
+    </tr>
+    <tr>
+      <td>{{SC.survey.option4}}</td>
+      <td>{{SC.survey.votes4}}</td>
+      <td><button ng-click='votes4(survey._id)'>Vote</button></td>
+    </tr>
+  </tbody>
+</table>

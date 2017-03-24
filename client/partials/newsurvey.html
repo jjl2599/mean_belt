@@ -1,0 +1,14 @@
+<a href="#!/main">Cancel</a>
+<h3>Put the questions and options here!</h3>
+<p ng-repeat="error in SC.errors">{{error}}</p>
+<br>
+<div ng-controller='UsersController as UC'>
+  <form ng-submit="SC.create(SC.newSurvey)">
+      <p>Question: <input ng-model= "SC.newSurvey.question" type="text"></p>
+      <p>Option 1: <input ng-model= "SC.newSurvey.option1" type="text"></p>
+      <p>Option 2: <input ng-model= "SC.newSurvey.option2" type="text"></p>
+      <p>Option 3: <input ng-model= "SC.newSurvey.option3" type="text"></p>
+      <p>Option 4: <input ng-model= "SC.newSurvey.option4" type="text"></p>
+      <input type="submit" value="Create Poll">
+  </form>
+</div>

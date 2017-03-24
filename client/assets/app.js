@@ -10,5 +10,13 @@ app.config(function($routeProvider){
     templateUrl: 'partials/main.html',
     controller: 'UsersController as UC'
   })
+  .when('/create', {
+    templateUrl: 'partials/newsurvey.html',
+    controller: 'SurveysController as SC'
+  })
+  .when('/survey/:id', {
+    templateUrl: 'partials/survey.html',
+    controller: 'SurveysController as SC'
+  })
   .otherwise('/')
 })

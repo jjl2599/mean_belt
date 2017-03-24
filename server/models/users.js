@@ -24,7 +24,11 @@ var UserSchema = mongoose.Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	surveys:[{
+		type:mongoose.Schema.Types.ObjectId,
+		ref:'Surveys'
+	}]
 }, {timestamps: true});
 
 

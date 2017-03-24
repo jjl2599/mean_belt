@@ -4,7 +4,7 @@ var path = require('path');
 
 var reg = new RegExp( ".js$", "i" );
 
-var dbURI = 'mongodb://localhost/login_register';
+var dbURI = 'mongodb://localhost/survey_belt';
 
 mongoose.connect( dbURI );
 
