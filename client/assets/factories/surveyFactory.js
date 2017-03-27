@@ -13,17 +13,8 @@ app.factory('SurveyFactory', function($http){
 		$http.post('/surveys', newSurvey).then(callback)
 	}
 
-  factory.votes1 = function(id, callback){
-    $http.put('/votes1/' + id, survey).then(callback)
-  }
-	factory.votes2 = function(id, callback){
-    $http.put('/votes2/' + id, survey).then(callback)
-  }
-	factory.votes3 = function(id, callback){
-    $http.put('/votes3/' + id, survey).then(callback)
-  }
-	factory.votes4 = function(id, callback){
-    $http.put('/votes4/' + id, survey).then(callback)
+  factory.vote = function(id,vote_id,callback){
+    $http.patch(`/surveys/${id}/${vote_id}`).then(callback)
   }
 
 	factory.delete = function(id, callback){

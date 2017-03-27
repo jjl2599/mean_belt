@@ -25,10 +25,6 @@ var UserSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	surveys:[{
-		type:mongoose.Schema.Types.ObjectId,
-		ref:'Surveys'
-	}]
 }, {timestamps: true});
 
 

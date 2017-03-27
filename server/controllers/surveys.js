@@ -25,104 +25,71 @@ module.exports = {
   },
 
   create: function(req, res){
-    var survey = new Survey(req.body);
-    survey.save(function(err,doc){
-      if(err){
-        return res.json(err);
-      }
-      User.findById(req.body._user, function(err, user){
+    User.findById(req.params.id , function(err, user){
+      var survey = new Survey(req.body);
+      survey.save(function(err,survey){
         if(err){
           return res.json(err);
         }
-        if(user){
-          user.surveys.push(survey);
-          user.save(function(err){
-            if(err){
-              return res.json(err);
-            }
-            return res.json(doc);
-          })
+        else{
+          return res.json(survey);
         }
       })
     })
   },
 
-  votes1: function(req,res){
-    Survey.findOne(req.params.id, function(err, survey){
-      if(err){
-        return res.json(err);
-      }
-      else {
-        survey.votes1++;
-        survey.save(function(err){
-          if(err){
-            console.log('vote not counted');
-          }
-          else {
-            return res.json(survey);
-          }
-        });
-      }
-    });
+  vote: function(req, res) {
+   Survey.findById(req.params.id).exec(function(err, survey) {
+     if (err) {
+       return res.json(err);
+     };
+     if (req.params.vote_id == 1) {
+       survey.option1.count++;
+       survey.save(function(err,survey){
+         if(err){
+           return res.json(err);
+         }
+         else{
+           return res.json(survey)
+         }
+       })
+     } else if (req.params.vote_id == 2) {
+       survey.option2.count++;
+       survey.save(function(err,survey){
+         if(err){
+           return res.json(err);
+         }
+         else{
+           return res.json(survey)
+         }
+       })
+     } else if (req.params.vote_id == 3) {
+     survey.option3.count++;
+     survey.save(function(err,survey){
+       if(err){
+         return res.json(err);
+       }
+       else{
+         return res.json(survey)
+       }
+     })
+   } else if (req.params.vote_id == 4) {
+     survey.option4.count++;
+     survey.save(function(err,survey){
+       if(err){
+         return res.json(err);
+       }
+       else{
+         return res.json(survey)
+       }
+      })
+    }
+   });
   },
 
-  votes2: function(req,res){
-    Survey.findOne(req.params.id, function(err, survey){
-      if(err){
-        return res.json(err);
-      }
-      else {
-        survey.votes2++;
-        survey.save(function(err){
-          if(err){
-            console.log('vote not counted');
-          }
-          else {
-            return res.json(survey);
-          }
-        });
-      }
-    });
-  },
-  votes3: function(req,res){
-    Survey.findOne(req.params.id, function(err, survey){
-      if(err){
-        return res.json(err);
-      }
-      else {
-        survey.votes3++;
-        survey.save(function(err){
-          if(err){
-            console.log('vote not counted');
-          }
-          else {
-            return res.json(survey);
-          }
-        });
-      }
-    });
-  },
-  votes4: function(req,res){
-    Survey.findOne(req.params.id, function(err, survey){
-      if(err){
-        return res.json(err);
-      }
-      else {
-        survey.votes4++;
-        survey.save(function(err){
-          if(err){
-            console.log('vote not counted');
-          }
-          else {
-            return res.json(survey);
-          }
-        });
-      }
-    });
-  },
 
   delete: function(req,res){
-    Order.findByIdAndRemove(req.params.id).exec(function(err,doc){
+    Survey.findByIdAndRemove(req.params.id).exec(function(err,doc){
       if(err){
         return res.json(err);
       }

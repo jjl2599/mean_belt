@@ -1,4 +1,4 @@
-<div class="top">
+<div class="top" ng-init="SC.find()">
   <a href="#!/main">Go to Polls</a>
 </div>
 <h2>{{SC.survey.question}}</h2>
@@ -13,24 +13,24 @@
   </thead>
   <tbody>
     <tr>
-      <td>{{SC.survey.option1}}</td>
-      <td>{{SC.survey.votes1}}</td>
-      <td><button ng-click='votes1(survey._id)'>Vote</button></td>
+      <td>{{SC.survey.option1.content}}</td>
+      <td><center>{{SC.survey.option1.count}}</center></td>
+      <td><button ng-click='SC.vote(SC.survey._id,1)'>Vote</button></td>
     </tr>
     <tr>
-      <td>{{SC.survey.option2}}</td>
-      <td>{{SC.survey.votes2}}</td>
-      <td><button ng-click='votes2(survey._id)'>Vote</button></td>
+      <td>{{SC.survey.option2.content}}</td>
+      <td><center>{{SC.survey.option2.count}}</center></td>
+      <td><button ng-click='SC.vote(SC.survey._id,2)'>Vote</button></td>
     </tr>
     <tr>
-      <td>{{SC.survey.option3}}</td>
-      <td>{{SC.survey.votes3}}</td>
-      <td><button ng-click='votes3(survey._id)'>Vote</button></td>
+      <td>{{SC.survey.option3.content}}</td>
+      <td><center>{{SC.survey.option3.count}}</center></td>
+      <td><button ng-click='SC.vote(SC.survey._id,3)'>Vote</button></td>
     </tr>
     <tr>
-      <td>{{SC.survey.option4}}</td>
-      <td>{{SC.survey.votes4}}</td>
-      <td><button ng-click='votes4(survey._id)'>Vote</button></td>
+      <td>{{SC.survey.option4.content}}</td>
+      <td><center>{{SC.survey.option4.count}}</center></td>
+      <td><button ng-click='SC.vote(SC.survey._id,4)'>Vote</button></td>
     </tr>
   </tbody>
 </table>

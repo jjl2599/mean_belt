@@ -1,7 +1,7 @@
 <div ng-controller='SurveysController as SC' ng-init="UC.index();SC.index()">
 	<div class="userdash">
 		<h3>Current User: {{UC.current_user.firstname}}</h3>
-		<a href="" ng-click="UC.logout()">Logout</a>
+		<a href="" ng-click="UC.logout()">Logout</a><br>
 		<a href="#!/create">Create a New Poll</a>
 	</div>
 	<input type="text" ng-model="survey_filter" placeholder="Filter Surveys...">
@@ -19,9 +19,7 @@
 				<td>{{survey.author}}</td>
 				<td><a href="#!/survey/{{survey._id}}">{{survey.question}}</a></td>
 				<td>{{survey.createdAt | date }}</td>
-				<!-- IF STATEMENT-->
-				<td><button ng-click="SC.delete(survey._id)">Delete</button></td>
-				<!-- IF STATEMENT-->
+				<td ng-if = "UC.current_user.firstname == survey.author"><button ng-click="SC.delete(survey._id)">Delete</button></td>
 			</tr>
 		</tbody>
 	</table>

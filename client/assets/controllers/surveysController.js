@@ -17,18 +17,13 @@ app.controller('SurveysController',['SurveyFactory', 'UserFactory', '$location',
 	}
 
   self.find = function(){
-		SurveyFactory.find($routeParams.id, function(res){
-			self.index()
-      console.log(res)
-      self.survey = res.data
+		SurveyFactory.find($routeParams.id, function(survey){
+      self.survey = survey.data
 		})
 	}
 
-  self.find();
-
   self.create = function(newSurvey){
     newSurvey.author = UserFactory.current_user.firstname
-    console.log(newSurvey)
 		self.errors = []
 		SurveyFactory.create(newSurvey, function(res){
 			if(res.data.code && res.data.code == 11000){
@@ -47,27 +42,11 @@ app.controller('SurveysController',['SurveyFactory', 'UserFactory', '$location',
 		})
 	}
 
-  self.votes1 = function(){
-   SurveyFactory.votes1($routeParams.id, function(rtnData){
-     self.find();
-   });
+  self.vote = function(id,vote_id){
+    SurveyFactory.vote(id,vote_id, function(res){
+      self.find();
+    });
   }
-  self.votes2 = function(){
-   SurveyFactory.votes1($routeParams.id, function(rtnData){
-     self.find();
-   });
-  }
-  self.votes3 = function(){
-   SurveyFactory.votes1($routeParams.id, function(rtnData){
-     self.find();
-   });
-  }
-  self.votse4 = function(){
-   SurveyFactory.votes1($routeParams.id, function(rtnData){
-     self.find();
-   });
-  }
-
 
 
   self.delete = function(id){
@@ -76,4 +55,5 @@ app.controller('SurveysController',['SurveyFactory', 'UserFactory', '$location',
 		})
 	}
 
+  // self.find();
 }]);

@@ -10,9 +10,6 @@ module.exports = function(app){
 	app.get('/surveys', Surveys.index);
 	app.get('/surveys/:id', Surveys.find);
 	app.post('/surveys', Surveys.create);
-	app.get('/votes1/:id', Surveys.votes1);
-	app.get('/votes2/:id', Surveys.votes2);
-	app.get('/votes3/:id', Surveys.votes3);
-	app.get('/votes4/:id', Surveys.votes4);
+	app.patch('/surveys/:id/:vote_id', Surveys.vote);
 	app.delete('/surveys/:id', Surveys.delete);
 }
